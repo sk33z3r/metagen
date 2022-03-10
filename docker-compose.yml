@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+
+  nginx:
+    container_name: "metagen.nginx"
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./:/var/www/html:ro
+    networks:
+      metagen:
+        ipv4_address: 172.225.0.100
+
+  php:
+    container_name: "metagen.php"
+    image: php:fpm
+    volumes:
+      - ./:/var/www/html:ro
+    networks:
+      metagen:
+        ipv4_address: 172.225.0.110
+
+networks:
+  metagen:
+    name: metagen
+    ipam:
+      config:
+        - subnet: 172.225.0.0/24
