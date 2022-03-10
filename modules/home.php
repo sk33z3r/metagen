@@ -20,7 +20,7 @@
                     </ol>
                 </div>
                 <div class="section">
-                    <h4>Example JSON</h4>
+                    <h4 id="example">Example JSON</h4>
 <pre>{
   "name": "Collection #00",
   "description": "A string of text that describes the collection.",
