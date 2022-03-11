@@ -145,7 +145,7 @@
                                 $num++;
                             }
                             echo "<p>Zipping up the files...</p>";
-                            shell_exec("cd generated; zip -r ${col_file}_metadata.zip ${col_file}_metadata/ && rm -r ${col_file}_metadata");
+                            shell_exec("zip -r generated/${col_file}_metadata.zip generated/${col_file}_metadata/ && rm -r generated/${col_file}_metadata");
                             echo "<p>...zip archive created!</p>";
                         ?>
                     </div>
