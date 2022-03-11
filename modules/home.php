@@ -142,12 +142,11 @@
                                 $bytes = file_put_contents($json_file, $json);
                                 echo "<p>JSON written to ${json_file}. ${bytes}B total size.</p>";
 
-                                echo "<p>Zipping up the files...</p>";
-                                shell_exec("cd generated; zip -r ${col_file}_metadata.zip ${col_file}_metadata/ && rm -r ${col_file}_metadata");
-                                echo "<p>...zip archive created!</p>";
-
                                 $num++;
                             }
+                            echo "<p>Zipping up the files...</p>";
+                            shell_exec("cd generated; zip -r ${col_file}_metadata.zip ${col_file}_metadata/ && rm -r ${col_file}_metadata");
+                            echo "<p>...zip archive created!</p>";
                         ?>
                     </div>
                     <h3>...here's a big fat bag o' json for ya:</h3>
