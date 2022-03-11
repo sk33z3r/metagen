@@ -16,7 +16,7 @@
                     <p>There are two CID fields: 1 for thumbnail images and 1 for the actual content. See the file-type drop downs for which file types are accepted. It is completely fine to paste the same CID for both fields if you only have 1 set of images!</p>
                     <p>The filenames should match the collection name, except lowercase and replacing any spaces with underscores. For instance, if your collection name is "My First NFT", then all of your files should be named <code>my_first_nft_XX.png</code>, where XX is an ID number.</p>
                     <p>Increment the ID numbers in your filenames, starting and ending at whatever number you want. Just make sure to enter the correct First and Last IDs in the fields below.</p>
-                    <p>Upload the thumbnail and content folders to Pinata or nft.storage to get your CIDs. Once generated, you'll get a zipped file of all the metadata files for upload to IPFS.</p>
+                    <p>Upload the thumbnail and content folders to <a href="https://pinata.cloud" target="_blank">pinata.cloud</a> or using <a href="https://docs.ipfs.io/install/ipfs-desktop/" target="_blank">IPFS Desktop</a> to get your CIDs. Once generated, you'll get a zipped file of all the metadata files for upload to IPFS.</p>
                     <p><i>Disclaimer: You will still have to copy and paste each individual metadata CID if you plan to use the web minting UI.</i></p>
                 </div>
             </div>
