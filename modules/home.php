@@ -176,7 +176,7 @@
                             // Zip archive will be created only after closing object
                             $zip->close();
                             echo "<p>...zip archive created!</p>";
-                            shell_exec("rm -r $path");
+                            shell_exec("rm -r $rootPath");
                         ?>
                     </div>
                     <h3>...here's a big fat bag o' json for ya:</h3>
