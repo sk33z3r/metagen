@@ -3,8 +3,12 @@
 # change to the name of the NFT collection
 COLLECTION="FryPhone"
 
-# change this to the top-level CID for your image folder
-CID="QmYfhkvAKiA93bMBhSSDhW28sAUuE5VdeUDyKxPAYqF1Xd"
+# change this to the top-level CID for your image folders
+thumbCID="QmYfhkvAKiA93bMBhSSDhW28sAUuE5VdeUDyKxPAYqF1Xd"
+fullCID="QmYfhkvAKiA93bMBhSSDhW28sAUuE5VdeUDyKxPAYqF1Xd"
+
+# set royalty percentage
+royalty=0
 
 # set the starting ID
 NUM=0
@@ -20,15 +24,20 @@ while [ $NUM -le $LAST_NUM ]; do
 # change these to fit your NFT
 # put ${NUM} wherever you want the ID to appear
 # put ${COLLECTION} wherever you want the collection name to appear
-filename="${COLLECTION}_${NUM}.png"
-description="${COLLECTION} #${NUM} - FryPhones are 10,080 sentient phones to collect! @JoshFryArt on twitter - joshuaf.loopring.eth"
+thumbFile="${COLLECTION}_${NUM}_thumbnail.png"
+fullFile="${COLLECTION}_${NUM}.png"
+description="${COLLECTION} #${NUM} - PUT DESCRIPTION HERE"
 name="${COLLECTION} #${NUM}"
 
-cat <<EOF > ${dir}/FryPhone_${NUM}.json
+cat <<EOF > ${dir}/${COLLECTION}_${NUM}.json
 {
-  "description": "${description}",
-  "image": "ipfs://${CID}/${filename}",
   "name": "${name}"
+  "description": "${description}",
+  "image": "ipfs://${thumbCID}/${thumbFile}",
+  "animation_url": "ipfs://${fullCID}/${fullFile}",
+  "royalty_percentage": ${royalty},
+  "attributes": [],
+  "properties": {}
 }
 EOF
 ((NUM++))
