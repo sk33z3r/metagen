@@ -16,7 +16,7 @@ services:
 
   php:
     container_name: "metagen.php"
-    image: php:fpm
+    build: .
     volumes:
       - ./:/var/www/html:rw
     networks:
