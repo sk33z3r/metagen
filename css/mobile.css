@@ -14,6 +14,23 @@
         width: 100%;
     }
 
+    #drops {
+        width: 100%;
+    }
+
+    #drops select {
+        width: 50%;
+    }
+
+    #traits {
+        width: 25px;
+        height: 25px;
+    }
+
+    #artist {
+        flex-direction: column;
+    }
+
     .form {
         margin: 5px 0;
     }
@@ -24,12 +41,20 @@
     }
 
     .wide {
-        width: 325px;
+        width: 100%;
+    }
+
+    .med {
+        width: 100%;
     }
 
     .btn {
         padding: 10px;
         width: 335px;
+    }
+
+    .row {
+        width: 100%;
     }
 
     .content {

@@ -31,7 +31,7 @@ name="${COLLECTION} #${NUM}"
 
 cat <<EOF > ${dir}/${COLLECTION}_${NUM}.json
 {
-  "name": "${name}"
+  "name": "${name}",
   "description": "${description}",
   "image": "ipfs://${thumbCID}/${thumbFile}",
   "animation_url": "ipfs://${fullCID}/${fullFile}",
