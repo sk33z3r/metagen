@@ -89,6 +89,7 @@ form {
 .btn {
     padding: 20px;
     width: 510px;
+    font-size: 24px;
 }
 
 .btn:hover, .btn:focus {

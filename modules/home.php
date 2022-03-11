@@ -145,13 +145,44 @@
                                 $num++;
                             }
                             echo "<p>Zipping up the files...</p>";
-                            shell_exec("zip -r generated/${col_file}_metadata.zip generated/${col_file}_metadata/ && rm -r generated/${col_file}_metadata");
+                            $zip_file = "generated/${col_file}_metadata.zip";
+                            $rootPath = realpath($path);
+
+                            // Initialize archive object
+                            $zip = new ZipArchive();
+                            $zip->open($zip_file, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+
+                            // Create recursive directory iterator
+                            /** @var SplFileInfo[] $files */
+                            $files = new RecursiveIteratorIterator(
+                                new RecursiveDirectoryIterator($rootPath),
+                                RecursiveIteratorIterator::LEAVES_ONLY
+                            );
+
+                            foreach ($files as $name => $file)
+                            {
+                                // Skip directories (they would be added automatically)
+                                if (!$file->isDir())
+                                {
+                                    // Get real and relative path for current file
+                                    $filePath = $file->getRealPath();
+                                    $relativePath = substr($filePath, strlen($rootPath) + 1);
+
+                                    // Add current file to archive
+                                    $zip->addFile($filePath, $relativePath);
+                                }
+                            }
+
+                            // Zip archive will be created only after closing object
+                            $zip->close();
                             echo "<p>...zip archive created!</p>";
+                            shell_exec("rm -r $path");
                         ?>
                     </div>
                     <h3>...here's a big fat bag o' json for ya:</h3>
-                    <a href="<?php echo "/generated/${col_file}_metadata.zip"; ?>"><button class="form btn">Collection Download</button></a>
+                    <a href="<?php echo "/${zip_file}"; ?>"><button class="form btn">Collection Download</button></a>
                     <p><small><i>PLEASE NOTE: This download link will expire in 1 hour.</i><small></p>
+                    <a href="/"><button class="form btn">Go Back to Form</button></a>
                 </div>
             <?php } ?>
         </div>
