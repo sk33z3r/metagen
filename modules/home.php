@@ -16,8 +16,9 @@
                     <p>There are two CID fields: 1 for thumbnail images and 1 for the actual content. See the file-type drop downs for which file types are accepted. It is completely fine to paste the same CID for both fields if you only have 1 set of images!</p>
                     <p>The filenames should match the collection name, except lowercase and replacing any spaces with underscores. For instance, if your collection name is "My First NFT", then all of your files should be named <code>my_first_nft_XX.png</code>, where XX is an ID number.</p>
                     <p>Increment the ID numbers in your filenames, starting and ending at whatever number you want. Just make sure to enter the correct First and Last IDs in the fields below.</p>
-                    <p>Upload the thumbnail and content folders to <a href="https://pinata.cloud" target="_blank">pinata.cloud</a> or using <a href="https://docs.ipfs.io/install/ipfs-desktop/" target="_blank">IPFS Desktop</a> to get your CIDs. Once generated, you'll get a zipped file of all the metadata files for upload to IPFS.</p>
-                    <p><i>Disclaimer: You will still have to copy and paste each individual metadata CID if you plan to use the web minting UI.</i></p>
+                    <p>Upload the thumbnail and content folders to <a href="https://pinata.cloud" target="_blank">pinata.cloud</a> or using <a href="https://docs.ipfs.io/install/ipfs-desktop/" target="_blank">IPFS Desktop</a> to get your CIDs. Once generated, you'll get a zipped file of all the metadata files.</p>
+                    <p>If you do not check "Populate Dummy Traits?", then the metadata automatically adds an "Artist" trait populated with your artist name. In this case, the json as downloaded is ready for upload to IPFS.</p>
+                    <p>If you do populate dummy traits, you will need to individually add your traits for each NFT. The logic to do this plainly in the UI will be difficult to sort out for many reasons, so this is a necessary evil for now. This is why I made dummy traits, as a template that should make it much easier to follows.</p>
                 </div>
             </div>
             <form method="post" action="/">
@@ -97,7 +98,7 @@
                 }
                 ?>
                 <div class="section">
-                    <h3>Hang tight, I'm generating all of your glorious metadata...</h3>
+                    <h2>Hang tight, I'm generating all of your glorious metadata...</h2>
                     <div id="log">
                         <?php
                             $num = $fid;
@@ -179,9 +180,9 @@
                             shell_exec("rm -r $rootPath");
                         ?>
                     </div>
-                    <h3>...here's a big fat bag o' json for ya:</h3>
+                    <h2>...here's that fat bag o' json for ya:</h2>
                     <a href="<?php echo "/${zip_file}"; ?>"><button class="form btn">Collection Download</button></a>
-                    <p><small><i>PLEASE NOTE: This download link will expire in 1 hour.</i><small></p>
+                    <p><i>PLEASE NOTE: This download link will expire in 1 hour.</i></p>
                     <a href="/"><button class="form btn">Go Back to Form</button></a>
                 </div>
             <?php } ?>
